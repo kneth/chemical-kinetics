@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{book}
+
+\usepackage[english]{babel}
+
+\usepackage{xspace}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+
+\usepackage{graphicx}
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+
+%% Latin
+\newcommand{\ie}[0]{\textit{i.e.,\xspace}}
+\newcommand{\eg}[0]{\textit{e.g.,\xspace}}
+\newcommand{\etc}[0]{\textit{etc.\@\xspace}}
+\newcommand{\cf}[0]{\textit{cf.\@\xspace}}
+\newcommand{\etal}[0]{\textit{et al.\@\xspace}}
+
+%% Useful mathematics
+\renewcommand{\vec}[1]{{\mathbf{#1}}}
+\newcommand{\diff}[2]{{\frac{\mathrm{d}#1}{\mathrm{d}#2}}}
+\newcommand{\dt}[1]{{\frac{\mathrm{d}#1}{\mathrm{d}t}}}
+\renewcommand{\d}[1]{\mathrm{d}#1}
+\newcommand{\ddiff}[2]{{\frac{\mathrm{d}^2#1}{\mathrm{d}#2^2}}}
+\newcommand{\pdiff}[2]{{\frac{\partial #1}{\partial #2}}}
+\newcommand{\mtrx}[1]{{\mathbf{#1}}}
+\newcommand{\half}[0]{{\scriptstyle\frac{1}{2}}}
+\newcommand{\twothird}[0]{{\small\frac{2}{3}}}
+\newcommand{\bigO}[1]{{\mathcal{O}(#1)}}
+\newcommand{\smbox}[1]{\mbox{\footnotesize #1}}
+\newcommand{\Tr}[0]{\mathrm{Tr}}
+
+%% Chemistry
+\newcommand{\species}[1]{\mathrm{#1}}
+\newcommand{\conc}[1]{[\species{#1}]}
+
+%% Units
+\newcommand{\liter}{{\mathrm{l}}}           % liter
+\newcommand{\GB}{{\mathrm{GB}}}             % Gigabyte
+\newcommand{\M}{{\mathrm{\small M}}}        % mol/litre
+\newcommand{\mol}{{\mathrm{mol}}}           % mol
+\newcommand{\meter}{{\mathrm{m}}}           % meter
+\newcommand{\s}{{\mathrm{s}}}               % second
+
+\newcommand*{\plimsoll}{{\ensuremath{-\kern-4pt{\ominus}\kern-4pt-}}}
+
+\setlength{\parskip}{0.1cm}
+\setlength{\parindent}{0.0cm}
+
+%% Useful commands
+\newcommand{\inputchap}[1]{\input{#1}\clearpage{\pagestyle{empty}\cleardoublepage}}
+
+%% Useful environments
+\newtheorem{example}{Example}[chapter]
+
+\begin{document}
+\inputchap{Frontpage/frontpage.tex}
+
+\pagestyle{fancy}
+%% Preface
+\inputchap{Preface/preface.tex}
+
+%% Table of contents, figures, ...
+\tableofcontents
+% \listoffigures
+
+\pagestyle{empty}
+% \inputchap{symbols.tex}
+\pagestyle{fancy}
+
+%% Chapters
+\inputchap{Introduction/intro.tex}
+\inputchap{Simple/simple-reactions.tex}
+\inputchap{Temperature/temperature.tex}
+\inputchap{Complex/complex-reactions.tex}
+
+%% Appendix
+\appendix
+\inputchap{Math/ode.tex}
+
+%% Bibliography
+\addcontentsline{toc}{chapter}{\numberline{}Bibliography}
+\bibliographystyle{plain}
+% \bibliography{}
+
+\end{document}

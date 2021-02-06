@@ -1,0 +1,69 @@
+\chapter{Temperature Dependency}
+\label{chap:Temperature}
+
+That the velocity of the reactions (measured by the rate constant) is dependent on the temperature may not come as a surprise. Basically everything in our everyday lives is chemistry \eg the growth of bacteria. And in order to slow down the growth of bacteria, we put our food in refrigerators. In other words, our intuitive feeling of the rate of a reaction is that it increases when the temperature is increased.
+
+\section{Arrhenius equation}
+\label{sect:Arrhenius}
+
+The temperature dependence of the reaction rate is summarized in the Arrhenius equation. The rate constant $k$ is related to the temperature $T$ as
+
+\begin{equation}
+    \label{eq:Arrhenius}
+    k = Ae^{-\frac{E_a}{RT}}
+\end{equation}
+
+where $A$ is called the \textit{pre-exponential factor} and $E_a$ \textit{the activation energy}. These two parameters are independent of the temperature. We can arrange the Arrhenius equation a bit into
+
+\begin{equation}
+    \ln k = \ln A - \frac{E_a}{R} \frac{1}{T}
+\end{equation}
+
+We can now understand how an Arrhenius plot works: by plotting the logarithm of the rate constant as a function of the inverse of the temperature we will get a straight line where the intercept is $\ln A$ and the slope is related to the activation energy.
+
+\section{A more fundamental understanding}
+\label{sect:ArrheniusExplained}
+
+In the previous section we saw how the rate constant depended on the temperature. The two parameters $A$ and $E_a$, were simply regarded as two empirical parameters. But we are able to give a more detailed explanation of the activation energy.
+
+The typical way a chemist think of a reaction is that the reaction can be decomposed into two reactions \ie
+
+\begin{equation}
+    A \rightarrow X^\ddagger \rightarrow P
+\end{equation}
+
+where $X^\ddagger$ is an intermediate or \textit{activated complex}. The energy along some "reaction coordinate" is often thought to be as outlined in figure \ref{fig:ActivatedComplex}. The height of the barrier is the activation energy.
+
+\begin{figure}
+    \caption{Energy as a function the reaction coordinate.}
+    \label{fig:ActivatedComplex}
+\end{figure}
+
+A chemical reaction is in a sense about "going uphill" \ie the larger the energy of the molecules is, the larger the probability of a reaction becomes. And the kinetic energy increases with the temperature according to the Boltzmann’s distribution. From this distribution one is able to show that the mean speed of a gas particle is
+
+\begin{equation}
+    c = \sqrt{\frac{3RT}{M}}
+\end{equation}
+
+where $M$ is the molar mass, and $T$ is the temperature. The kinetic energy is therefore proportional to the temperature ($E_{\mathrm{kin}} \propto c^2 \propto T$). This is \textbf{not} a full-proof argument, but it does serve as an intuitive argument.
+
+\section{Raising the temperature}
+\label{sect:RaisingTemperature}
+
+Very early in this course we learned that chemical reactions may produce or consume heat. If the reaction vessel is insulated \ie no heat is transferred though the walls, the temperature of the system will increase or decrease during the course of the reaction.
+
+As an example we can look at a very simple reaction, namely a first-order reaction
+
+\begin{equation}
+    A \overset{k}{\rightarrow} P
+\end{equation}
+
+where we denote $k$ as the rate constant. Now imaging that the reaction is exothermic \ie it produces heat (and $\Delta_r H^\plimsoll < 0)$. When 1 mole of $A$ has reacted at constant temperature, the system has received the amount of heat given by $\Delta_r H^\plimsoll$. If the same process occurs adiabatically the temperature of the system will increase.
+
+The reaction vessel and the species have heat capacity $C$, then when 1 mole of $A$ has reacted, the temperature is increased by
+
+\begin{equation}
+    \Delta T = \frac{\Delta_r H^\plimsoll}{C}
+\end{equation}
+
+Remember that the rate constant is dependent of the temperature. And the reaction will go even faster and the temperature is increased. Further this positive feedback mechanism continues until all $A$ has reacted.

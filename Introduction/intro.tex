@@ -1,0 +1,160 @@
+\chapter{Introduction and basic definitions}
+\label{chap:intro}
+
+Let us begin by defining and delimiting our term ``chemical
+kinetics''. As already mentioned in the preface, chemical kinetics is
+not about equilibrium, but the dynamics of chemical reactions.
+
+We can choose two distinct approaches towards chemical kinetics, namely
+the microscopic or the macroscopic one. The difference is the size of
+the system studied. In the microscopic approach we will study one
+molecule reacting with another molecule, while the macroscopic
+approach is a more phenomenological one. Here we study many molecules,
+maybe 1 mole (remember that 1 mole is $6.022\times 10^{23}$
+molecules).
+
+The present text approach chemical kinetics from the macroscopic
+viewpoint.
+
+The dynamics of the macroscopic viewpoint is the change in
+concentration. In other words, we should imaging that we are
+monitoring the concentration of a given species as a function of
+time. For example imaging the reaction $\species{I_2} + \species{I} \rightarrow \species{I_3}$. In this
+case we could measure the concentration of triodide \ie
+$[\species{I_3}](t)$ where the $t$ indicates that the concentration is
+measured as a function of time.
+
+I have to come with a warning before we begin our journey into the
+land of chemical kinetics. Often we will not use real chemical
+species, but only abstract ones like $A$ and $B$. The convention is
+that capital letters are always chemical species. In the beginning this
+may seem strange, but once learned, we can apply our results to many
+(real) reactions.
+
+\section{Velocity of a reaction}
+
+In order to do a more formalized (\ie mathematical) analysis of
+chemical reactions, it is not enough just to measure the concentration
+of the species involved. A more convenient approach is to begin the
+analysis by discussing the velocity of the reaction.
+
+The most general form we can write up a chemical reaction as
+
+\[
+  aA + bB + \cdots + xX + yY + \cdots \rightarrow 0
+\]
+
+where $A$, $B$ are reactants, $a$, $b$ their stoichiometric
+coefficients, $X$, $Y$ the products, and $x$, $y$ their stoichiometric
+coefficients. Remember, our convention is that the stoichiometric
+coefficients for reactants are negative, and positive for products.
+
+We will \textit{define} the velocity of this reaction as
+
+\begin{equation}
+  \label{eq:velocity}
+  v = \frac{1}{a}\dt{[A]} = \frac{1}{b}\dt{[B]} = \frac{1}{x}\dt{[X]} = \frac{1}{y}\dt{[Y]}
+\end{equation}
+
+\begin{example}
+  We will illustrate the concept of velocity by looking at the decomposition of hydrogen peroxide \ie
+
+  \[
+      2\species{H_2O_2} \rightarrow 2\species{H_2O} + \species{O_2}
+  \]
+
+  We have three species ($\species{H_20_2}$, $\species{H_2O}$, and $\species{O_2}$), and
+  the stoichiometric coefficients are —2, 2 and 1, respectively. The
+  velocity is therefore
+
+  \[
+    v = -\frac{1}{2}\dt{[\species{H_2O_2}]} = \frac{1}{2}\dt{[\species{H_2O}]} = \dt{[\species{O_2}]}
+  \]
+\end{example}
+
+So far we have not said anything about the velocity. If we are able to
+give an expression for $v$, we would have a differential equation. By
+solving this differential equation we would have the concentration as
+function of time (which is comparable to experiments). It is important
+to stress that the expression for the velocity is an experimental
+fact.
+
+Often we call the expression for the velocity of the reaction for the
+\textit{rate law}.
+
+\section{Elementary reactions}
+\label{sec:elementaryReactions}
+
+All chemical reactions can be divided into two classes, elementary and
+non-elementary reactions. The elementary reactions are the ones that
+happen in Nature (usually our laboratory). Any non-elementary reaction
+is the sum of a number of elementary reactions.
+
+Elementary reactions usually only have one or two reactants. But as we
+will see later the reaction $\species{H_2} + \species{Br_2} \rightarrow 2\species{HBr}$ is not an
+elementary reaction as one might first think. Enzyme reactions are
+never written down in terms of elementary reactions while gas phase
+reactions usually are.
+
+Elementary reactions have one nice feature; we can - almost
+automatically - write down an expression for the velocity of the
+reaction. Or we could say it the opposite way: if the reaction follows
+a certain expression for the velocity (an expression we will discuss
+below) we know that it is an elementary reaction.
+
+Let us use a generalized reaction \ie
+
+\[
+  aA + bB + \cdots \rightarrow xX + yY \cdots
+\]
+
+where the stoichiometric coefficients for both the reactants and the
+products are positive!
+
+For an elementary reaction the velocity is
+
+\begin{equation}
+  \label{eq:elementaryReaction}
+  v = k[A]^a[B]^B\cdots
+\end{equation}
+
+The constant $k$ is a proportionality constant which we call the
+\textit{rate constant}.
+
+\begin{example}
+  We continue our example from previous section \ie the decomposition of hydrogen peroxide:
+
+  \begin{equation}
+    \label{eq:decompH2O2}
+    2\species{H_2O_2} \rightarrow 2\species{H_2O} + \species{O_2}
+  \end{equation}
+
+  There is only one reactant, $\species{H_2O_2}$, and the velocity is
+
+  \begin{equation}
+    \label{eq:decompH2O2velocity}
+    v = k\cdot [\species{H_2O_2}]^2
+  \end{equation}
+\end{example}
+
+In the example we can see one of the bad habits used in chemical
+kinetics. The concentration of hydrogen peroxide is written as
+$[\species{H_2O_2}]$, but this notation does not emphasize that the
+concentration charges with time. The correct way of writing the
+concentration of hydrogen peroxide is $[\species{H_2O_2}](t)$, but we will
+never do that.
+
+Some chemical kineticists call reactions where the velocity is written
+as in equation \ref{eq:elementaryReaction} kinetics consistent with
+the \textit{law of mass action}. The reason for this is that the
+expression for the velocity reminds us of the one used in the
+discussion of chemical equilibrium. Of course nobody uses so long a
+term everyday - one just says: mass action kinetics.
+
+Ending the discussion of the concept of elementary reactions we will
+introduce the order of a reaction. The term ``order'' is only
+meaningful when we are talking about mass action kinetics. The order
+of a reaction is defined as the sum of the stoichiometric coefficients
+of the reactants (or more precisely, the sum of the exponents in the
+rate law). In the example of the decomposition of hydrogen peroxide,
+the order is 2.
