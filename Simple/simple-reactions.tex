@@ -1,0 +1,273 @@
+
+\chapter{Simple reactions}
+\label{chap:simpleReactions}
+
+In the previous chapter we had a look on elementary reactions, and
+what the expression for the velocity looks like. In this chapter we
+will examine a number of elementary reactions; we will begin with a
+reaction and then deduce the concentration as function of time of the
+main species. The deduction is the same as solving ordinary
+differential equations of first order, and it is therefore recommended
+to read appendix \ref{chap:ode} before proceeding.
+
+
+\section{Half-lives}
+\label{sec:halfLives}
+
+As a chemical reaction proceeds the reactants are consumed. One way of
+measuring the consumption of reactants is half-lives. The time it
+takes to half the concentration of a species is called the half-life
+of that species. Let us put it into a more formalised form. We assume
+that we measure at time $t_0$ the concentration of a species $A$ to be
+$[A]_0$. At time $t_1$ we measure it to be $\half[A]_0$. The half-life
+is then $t_\half = t_1 - t_0$.
+
+We will in the next sections see how we can determine the half-lives
+for some specific reactions.
+
+
+\section{First order}
+\label{sec:firstOrder}
+
+We will begin our small survey of chemical reactions by examininga
+first-order reaction. A first-order reaction is a reaction which has
+the form
+
+\begin{equation}
+  \label{eq:firstOrderReaction}
+  A \overset{k}{\rightarrow} P
+\end{equation}
+
+The rate law of a first-order reaction is
+
+\begin{equation}
+  \label{eq:firstOrderVelocity1}
+  v = k\cdot [A]
+\end{equation}
+
+where $k$ is the rate constant. Per definition (of velocity) we know that
+
+\begin{equation}
+  \label{eq:firstOrderVelocity2}
+  v = - \dt{[A]}
+\end{equation}
+
+Combining these two equations we arrive with an ordinary differential
+equation, namely
+
+\begin{equation}
+  \label{eq:firstOrder}
+  \dt{[A]} = -k\cdot [A]
+\end{equation}
+
+In order to solve a differential equation, we have to specify some
+initial conditions. In our case, we will use that at time $t = 0$ the
+concentration of $A$ is $[A]_0$. The easist way of solving this
+differential equation is to separate the variables \ie $[A]$ and
+$t$. This gives us
+
+\begin{equation}
+  \label{eq:firstOrderSeparation}
+  \frac{1}{[A]}\mathrm{d}[A] = -k\mathrm{d}t
+\end{equation}
+
+We can now integrate on both sides \ie
+
+\begin{align}
+  \int_{[A]_0}^{[A]} \frac{1}{[A]}\mathrm{d}[A] &= \int_0^t -k\mathrm{d}t \Leftrightarrow  \nonumber \\
+  \ln[A] - \ln[A]_0 &= -kt \Leftrightarrow \nonumber \\
+  [A] &= [A]_0e^{-kt}
+\end{align}
+
+The last equation tells us how the concentration of $A$ evolves as
+function of time. Figure \ref{fig:FirstOrderReactions} shows a number
+of reactions with different rate constants.
+
+\begin{figure}
+  \centering
+
+  \caption{Different first-order reactions. The rate constants are varied, $k_a = 10\s^{-1}$, $k_b = 1\s^{-1}$, $k_c = 0.1\s^{-1}$.}
+  \label{fig:FirstOrderReactions}
+\end{figure}
+
+We are able to find the half-life of the reaction. If we start the
+reaction at $t = 0$ and the concentration is $[A]_0$, then at
+$t = t_\half$, the concentration is $\half [A]_0$. If we insert this
+into the expression for the times dependence of the concentration, we
+obtain
+
+\begin{align}
+  \label{eq:firstOrderHalfLives}
+  \ln\left(\frac{\half[A]_0}{[A]_0}\right) &= -kt_\half \Leftrightarrow \nonumber \\
+  \ln\frac{1}{2} &= -kt_\half \Leftrightarrow \nonumber \\
+  t_\half &= \frac{\ln2}{k}
+\end{align}
+
+On the other hand, if we know the half-life of $A$, we are able to
+determine the rate constant.
+
+There exists one very simple way to determine the rate constant of a
+first-order reaction. If we rearrange the expression for the
+concentration, we can get
+
+\begin{equation}
+  \label{eq:firstOrderLinear}
+  \ln[A] = \ln[A]_0 - kt
+\end{equation}
+
+\ie we have applied the logarithm on both sides. By plotting $\ln[A]$
+as a function of time, we will obtain a straight line with intercept
+$\ln[A]_0$ and slope $-k$. Figure \ref{fig:firstOrderLinear} shows how
+it works graphically.
+
+\begin{figure}
+  \centering
+
+  \caption{The graphical method to determine the rate constant for first-order reactions.}
+  \label{fig:firstOrderLinear}
+\end{figure}
+
+\section{Second-order}
+\label{sec:secondOrder}
+
+\subsection{One reactant}
+We will not begin with this one, but one a bit simpler, namely the reaction
+
+\begin{equation}
+  \label{eq:secondOrderSame}
+  2A \overset{k}{\rightarrow} P
+\end{equation}
+
+The rate law for this reaction is
+
+\begin{equation}
+  \label{eq:secondOrderSameVelocity}
+  \dt{[A]} = -k[A]^2
+\end{equation}
+
+where $k$ is the rate constant. One could argue that we miss a $\half$ on the right-hand side coming from the stoichiometric coefficient, but we have absorbed it in the rate constant \ie the "correct" rate constant is $k^\prime = 2k$.
+
+We now have an ordinary differential equation, and the initial conditions can be chosen to be that at time $t = 0$ the concentration is $[A]_0$. By separating the variables, we obtain
+
+\begin{equation}
+  \frac{1}{[A]} = \mathrm{d}[A] = -k\mathrm{d}t
+\end{equation}
+
+By integrating on both sides, we obtain
+
+\begin{equation}
+  \frac{1}{[A]} = \frac{1}{[A]_0} + kt
+\end{equation}
+
+The concept of half-life - as in the case of a first-order reaction - is useful. At time $t = t_{\half}$ the concentration of $A$ is $\half[A]_0$. Inserting this into the equation above, we arrive at
+
+\begin{align}
+  \frac{1}{\half[A]_0} &= \frac{1}{[A]_0} + kt_{\half} \Leftrightarrow \nonumber  \\
+  t_{\half} &= \frac{1}{k[A]_0}
+\end{align}
+
+We notice something different; the half-life depends on the initial concentra- tion.
+
+\subsection{Two reactants}
+
+We are now ready to the more complicated case - two reactants. The general second-order reaction is
+
+\begin{equation}
+  \label{eq:secondOrder}
+  A + B \overset{k}{\rightarrow} P
+\end{equation}
+
+The velocity of the reaction is $v = k[A][B]$. We have one differential equation per reactant, and in this case we have two:
+
+\begin{subequations}
+  \label{eq:secondOrderTwoReactants}
+\begin{align}
+  \dt{[A]} &= -k[A][B] \\
+  \dt{[B]} &= -k[A][B]
+\end{align}
+\end{subequations}
+
+The initial concentrations \ie the concentrations at time $t = 0$, are $[A]_0$ and $[B]_0$. By the specification of the initial concentrations, we know that the set of equations given by equation \ref{eq:secondOrderTwoReactants} has a unique solution.
+
+One would have a hard job in solving the two equations, if one did not have a good idea. The trick is to say that at time $t$ the concentration of $A$ is $[A]_0 — x$ (and the concentration of $B$ is $[B]_0 — x$). First we notice that
+
+\begin{equation}
+  \dt{[A]} = \dt{[A]_0 - x} = \dt{[A]_0} - \dt{x}
+\end{equation}
+
+But since $[A]_0$ is a constant, $\dt{[A]_0} = 0$. Therefore we can see a simple relationship
+
+\begin{equation}
+  \dt{[A]} = - \dt{x}
+\end{equation}
+
+We can do similar with $B$, and then we would obtain
+
+\begin{equation}
+  \dt{[B]} = - \dt{x}
+\end{equation}
+
+In this way we have reduced our problem from two coupled differential equations to one. Equation \ref{eq:secondOrderTwoReactants} can then be written as
+
+\begin{equation}
+  \dt{x} = k([A]_0 - x)([B]_0 - x)
+\end{equation}
+
+The initial value of $x$ \ie at time $t = 0$, is $0$. As we have already seen a few times, the method of separating the variables ($x$ and $t$) can be used. Using this method, we have only $c$ on the left-hand side, and $t$ on the right-hand side \ie
+
+\begin{equation}
+  \label{eq:secondOrderSeparateVars}
+  \frac{1}{([A]_0 - x)([B]_0 - x)} \mathrm{d}x = k\mathrm{d}t
+\end{equation}
+
+At this point in the method of separating the variables we integrate on both sides. But integrating the fraction of the left-hand side does not seem to be easy, and we therefore decompose it. This is done by noticing that
+
+\begin{align*}
+  \frac{1}{[A]_0 - x} - \frac{1}{[B]_0 - x} &= \frac{[B]_0 - x - ([A]_0 - x)}{([A]_0 - x)([B]_0 - x)} \\
+    &= \frac{[B]_0 - [A]_0}{([A]_0 - x)([B]_0 - x)}
+\end{align*}
+
+We can now write equation \ref{eq:secondOrderSeparateVars} as
+
+\begin{equation}
+  \frac{1}{[B]_0 - [A]_0} \left( \frac{1}{[A]_0 - x} - \frac{1}{[B]_0 - x} \right) \mathrm{d}x = k\mathrm{d}t
+\end{equation}
+
+On the left-hand side we integrate from $0$ to $x$ and on the right-hand side we integrate from $0$ to $t$. After the integration we insert $[A] = [A]_0 - x$ and $[B] = [B]_0 - x$, and we finally obtain
+
+\begin{equation}
+  \label{eq:secondOrderSolution}
+  kt = \frac{1}{[A]_0 - [B]_0} \ln\left(\frac{[A][B]_0}{[A]_0[B]}\right)
+\end{equation}
+
+\section{Pseudo-first-order}
+\label{sect:PseudoFirstOrder}
+
+Experimentally, measurements on second-order reactions are difficult \ie it is difficult from experiments to find the rate constant. But we are able to use a smart technique - pseudo-first-order.
+
+Let us again look at a general second order chemical reaction \ie a reaction of the type
+
+\begin{equation}
+  A + B \overset{k}{\rightarrow} P
+\end{equation}
+
+From the previous section, we already know the concentrations as function of time. The expression given by equation (\ref{eq:secondOrderSolution}) is not easy to work with. But assume now that the concentration of $B$ is much larger than the concentration of $A$. This means that the concentration of $B$ does not change much. In other words, we can regard $[B]$ as a constant (the value is $[B]_0$). The rate law now becomes
+
+\begin{equation}
+  \dt{[A]} = -k[A][B]_0 = -K[A]
+\end{equation}
+
+where $K = k[B]_0$. We recognize the equation above as a first-order reaction, and the concentration of $A$ is therefore given by
+
+\begin{equation}
+  [A] = [A]_0 e^{-Kt} = [A]_0 e^{-k[B]_0t}
+\end{equation}
+
+Experimentally, we can now find the rate constant for the pseudo-first-order reaction, and by varying the concentration of $B$ we can find a value of the second-order rate constant.
+
+Figure \ref{fig:PseudoFirstOrder} shows the difference between the pseudo-first-order and the true reaction \ie the second-order reaction.
+
+\begin{figure}
+  \caption{he difference between a pseudo-first-order reaction and the second-order reaction. The upper curve is the second-order reaction while the lower curve is the pseudo-first-order. The parameters are: $k = 0.1$, $[A]_0 = 1.5$, $[Bl_0 = 15.0$.}
+  \label{fig:PseudoFirstOrder}
+\end{figure}

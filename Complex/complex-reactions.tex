@@ -1,0 +1,453 @@
+\chapter{More than One Reaction}
+\label{chap:complexReactions}
+
+In the previous chapters we have dealt with the basic principles of chemical kinetics. In this chapter we will go into more complicated chemical mechanisms.
+
+In Nature we seldom have only one reaction and one or two reactants. Often we will have 10 or 100 reactions on the same time, and this chapter gives us the general overview of such systems.
+
+\section{Chemical equilibrium}
+\label{sect:ChemEquilibrium}
+
+Earlier in this course in thermodynamics, we dealt with chemical equilibrium. We learned how to derive the law of mass action by applying the principle of minimizing Gibbs free energy.
+
+We can analyse the concept of chemical equilibrium by examining the reaction
+
+\begin{equation}
+    aA + bB + \cdots \overset{k_+}{\underset{k_-}{\leftrightharpoons}} xX + yY + \cdots
+\end{equation}
+
+where the forward reaction (left to right) has the rate constant $k_+$, and the backward reaction has rate constant $k_-$.
+
+We can write down the velocities for the two reactions. If they follow the law of mass action, we have
+
+\begin{subequations}
+\begin{align}
+    v_+ &= k_+ [A]^a[B]^b \cdots \\
+    v_- &= k_- [X]^x[Y]^y \cdots
+\end{align}
+\end{subequations}
+
+Chemical equilibrium is a dynamical equilibrium \ie even though there is no change in the concentrations of the species with time, the reactions forward and backward still occur. This is the same as saying that the two velocities are equal \ie
+
+\begin{equation}
+    k_+ [A]^a[B]^b \cdots = k_- [X]^x[Y]^y \cdots
+\end{equation}
+
+If we rearrange this equation a little, we will find the "usual" expression for chemical equilibrium \ie
+
+\begin{equation}
+    \frac{[X]^x[Y]^y \cdots}{[A]^a[B]^b \cdots} = \frac{k_+}{k_-} = \equiv K_{\mathrm{eq}}
+\end{equation}
+
+\section{Writing down rate laws}
+
+The more complicated the chemical mechanisms that we are studying, the more important is it that we use an almost automatic scheme when we write down the rate laws.
+
+Consider for example the reactions
+
+\begin{equation}
+    A \overset{k_1}{\rightarrow} B \overset{k_2}{\rightarrow} C
+\end{equation}
+
+This is a short notation for
+
+\begin{align*}
+    A &\overset{k_1}{\rightarrow} B \\
+    B &\overset{k_2}{\rightarrow} C
+\end{align*}
+
+We have now already so much experience that we can write down the velocities for the two reaction. We have
+
+\begin{subequations}
+    \begin{align}
+        v_1 &= k_1 [A] \\
+        v_2 &= k_2 [B]
+    \end{align}
+\end{subequations}
+
+The rate laws for $A$ and $C$ are simple first-order expressions, but $B$ is a bit more tricky. In the first reaction $B$ is produced while in the second one $B$ is consumed. If only the first reaction was considered, we would have
+
+\begin{equation}
+    \dt{[B]} = +v_1 = k_1[A]
+\end{equation}
+
+while if we only consider the second reaction, we have
+
+\begin{equation}
+    \dt{[B]} = -v_2 = -k_2[B]
+\end{equation}
+
+But the two reactions happen on the same time, and we therefore have
+
+\begin{equation}
+    \dt{[B]} = +v_1 - v_2 = k_1[A] - k_2[B]
+\end{equation}
+
+In summery we now have three differential equations describing the chemical system. They are
+
+\begin{align*}
+    \dt{[A]} &= -k_1[A] \\
+    \dt{[B]} &= k_1[A] - k_2[B] \\
+    \dt{[C]} &= k_2[B]
+\end{align*}
+
+s initial concentrations, we choose $[A](0) = [A]_0$, $[B]_0 = [C]_0 = 0$. The first reaction is a first-order reaction, and we know immediately that the solution is
+
+\begin{equation}
+    [A] = [A]_0e^{-k_1t}
+\end{equation}
+
+The differential equation for $[B]$ now becomes
+
+\begin{equation}
+    \dt{[B]} = k_1[A]_0e^{-k_1t} - k_2[B]
+\end{equation}
+
+his is an inhomogeneous first-order ordinary differential equation. The solution of this type of equation is found in appendix \ref{chap:ode}. We identify the different terms as
+
+\begin{align*}
+    p(t) &= k_2 \\
+    q(t) &= k_1[A]_0e^{-k_1t} \\
+    h(t) &= \int p(t) \mathrm{d}t = k_2 t
+\end{align*}
+
+The general solution is therefore
+
+\begin{align}
+    [B] &= e^{-k_2t} \int_0^t e^{k_2t} \cdot k_1[A]_0e^{-k_1t}\d{t} + c \nonumber \\
+        &= e^{-k_2t} \int_0^t k_1[A]_0e^{(k_2-k_1)t}\d{t} + c \nonumber \\
+        &= e^{-k_2t}\frac{[A]_0k_1}{k_2-k_1}\left[ e^{(k_2-k_1)t} \right]_0^t + c \nonumber \\
+        &= \frac{[A]_0k_1}{k_2-k_1}e^{-k_2t} \left( e^{(k_2-k_1)t} - 1 \right) + c \nonumber \\
+        &= \frac{[A]_0k_1}{k_2-k_1} \left( e^{-k_1t} - e^{-k_2 t} \right) + c \label{eq:TwoFirstOrderSolution}
+\end{align}
+
+The constant $c$ is adjusted by substituting the initial concentration of $B$. This gives us that $c = 0$.
+
+The considerations above lead us to a useful scheme: We begin by writing down the velocity for each reaction in the mechanism. For each species, we find all the reactions the species takes part in. We add the velocities together multiplied by the inverse stoichiometric coefficient (remember that it is negative for reactants, positive for products).
+
+\begin{example}
+    A simple but non-trivial example is Lotka’s mechanism. The mechanism consists of three reactions and four species. It is
+
+    \begin{align}
+        A + X &\overset{k_1}{\rightarrow} 2X \\
+        X + Y &\overset{k_2}{\rightarrow} 2Y \\
+        Y     &\overset{k_2}{\rightarrow} B
+    \end{align}
+
+    The first two reactions are of second order. In both reactions, one of the reactants ($X$ and $Y$) occurs on both sides. This is an example of autocatalysis - a species catalyses its own formation. The last reaction is of first order. The velocities of the three reactions are
+
+    \begin{subequations}
+        \begin{align}
+            v_1 &= k_1[A][X] \\
+            v_2 &= k_2[X][Y] \\
+            v_3 &= k_3[Y]
+        \end{align}
+    \end{subequations}
+
+    The first species is $A$ which occurs only in the first reaction where it is consumed. The rate law is
+
+    \begin{equation}
+        \dt{[A]} = -v_1 = -k_1[A][X]
+    \end{equation}
+
+    The neat species is $X$. $X$ is (netto) produced in the first reaction ($2-1=1$), and it is consumed in the second reaction. The rate law is therefore
+
+    \begin{equation}
+        \dt{[X]} = +v_1 - v_2 = k_1[A][X] - k_2[X][Y]
+    \end{equation}
+
+    The third species is $Y$. It is produced in reaction 2 (again we have this phenomenon of autocatalysis), and it is consumed it the last reaction. The differential equation for the concentration of $Y$ is
+
+    \begin{equation}
+        \dt{[Y]} = +v_2 - v_3 = k_2[X][Y] - k_3[Y]
+    \end{equation}
+
+    The final species is B which is the product of the mechanism. $B$ is produced by the third reaction, and the rate law for $B$ is
+
+    \begin{equation}
+        \dt{[B]} = +v_3 = k_3[Y]
+    \end{equation}
+\end{example}
+
+\section{Quasi-steady-state approximation}
+\label{sect:QSSA}
+
+In the previous section we looked at the two reactions
+
+\begin{equation}
+    A \overset{k_1}{\rightarrow} B \overset{k_2}{\rightarrow} C
+\end{equation}
+
+and we saw how complicated chemical kinetics quickly becomes (it is hard to find a simpler mechanism than the one above). The example shows us that we need some approximating technique in our quest of studying chemical reactions. Fortunately we have such a technique. It was "invented" in the beginning of last century, and it is called the \textit{quasi-steady-state approximation} (QSSA).
+
+The quasi-steady-state approximation says that the concentration of the intermediates in a mechanism after some time changes only slowly. If $X$ is an intermediate in a reaction scheme, the approximation can be formulated mathematically as
+
+\begin{equation}
+    \label{eq:ApproxZero}
+    \dt{[X]} \approx 0
+\end{equation}
+
+There are mainly two problems with the QSSA:
+
+\begin{itemize}
+    \item What does one mean by "some time"?
+    \item One should not always apply equation (\ref{eq:ApproxZero}) to all intermediates, but then which ones should be chosen?
+\end{itemize}
+
+\begin{example}
+    In the previous section we solved the differential equations for the mechanism
+
+    \begin{equation}
+        A \overset{k_1}{\rightarrow} B \overset{k_2}{\rightarrow} C
+    \end{equation}
+
+    We can regard $B$ as an intermediate. The rate law for $B$ is
+
+    \begin{equation}
+        \dt{[B]} = k_1[A] - k_2[B]
+    \end{equation}
+
+    When $B$ is an intermediate, we can apply the quasi-steady-state approximation. This is the same as
+
+    \begin{equation}
+        k_1[A] - k_2[B] = 0
+    \end{equation}
+
+    The equation above is straight-forward to solve. As one might remember, it was very hard to find an expression for $[B]$ before. This time we get
+
+    \begin{equation}
+        [B] = \frac{k_1}{k_2}[A] = \frac{k_1}{k_2}[A]_0e^{-k_1t}
+    \end{equation}
+
+    Comparing with the expression for $[B]$, equation (\ref{eq:TwoFirstOrderSolution}), in the case where we solved the differential equation, the expression above is very simple.
+
+    One has to remember that this is an approximation. Figure \ref{fig:QSSAerror} shows us an example on how large the difference is.
+\end{example}
+
+\begin{figure}
+    \caption{The error made by the QSSA. The exponential decay is the QSSA expression.}
+    \label{fig:QSSAerror}
+\end{figure}
+
+\subsection{Enzyme reactions}
+\label{sect:EnzymeReactions}
+
+catalyst is a chemical compound which speeds up a chemical reaction. In the context of chemical kinetics, this means that the velocity is increased. In biochemical reactions one often finds catalysts - they belong to the proteins and are called enzymes.
+
+In this section we will not go into a very deep discussion but merely touch some of the basic subjects. We will first consider the formation of a product P from some substrate S. The process is catalyzed by an enzyme EF. The mechanism is
+
+\begin{eqnarray}
+    E + S &\overset{k_1}{\underset{k_{-1}}{\leftrightharpoons}} ES \\
+    ES    &\overset{k_2}{\rightarrow} P + E
+\end{eqnarray}
+
+where $ES$ is a complex of the enzyme and the substrate. The rate law for this complex is
+
+\begin{eqnarray*}
+    \dt{[ES]} &=& \overbrace{k_1[E][S]}^{v_1} - \overbrace{k_{-1}[ES]}^{v_{_-1}} - \overbrace{k_2[ES]}^{v_2} \\
+              &=& k_1[E][S] - (k_{-1} + k_2) [ES]
+\end{eqnarray*}
+
+The only way we can proceed is to apply the quasi-steady-state approximation \ie to assume $\dt{[ES]} = 0$. This gives us immediately
+
+\begin{equation}
+    [ES] = \frac{k_1[E][S]}{k_{-1} + k_2}
+\end{equation}
+
+The mass of the enzyme must be constant\footnote{The law of conservation of mass is fundamental in science.} \ie $[ES]+[E] = [E]_0$, where $[E]_0$ is the initial concentration of the enzyme (we assume that there are only enzyme and substrate to begin with). We can insert the condition of mass conservation into the expression for the concentration of the complex, and in this way we are able to obtain an expression which only contains the initial concentration of the enzyme (a constant) and the concentration of the substrate (a variable). The expression is obtained as
+
+\begin{eqnarray*}
+    [ES] &=& \frac{k_1([E]_0 - [ES])[S]}{k_{-1} + k_2} \\
+         &=& \frac{k_1[E]_0[S]}{k_{-1} + k_2} - \frac{[ES][S]}{k_{-1} + k_2} \Leftrightarrow \\
+    \left( 1 + \frac{k_1[S]}{k_{-1} + k_2} \right) [ES] &=& \frac{k_1[E]_0[S]}{k_{-1} + k_2} \Leftrightarrow \\ \ % why?
+    [ES] &=& \frac{k_{-1} + k_2}{k_{-1} + k_2 + k_1[S]} \cdot \frac{k_1[E]_0[S]}{k_{-1} + k_2} \\
+         &=& \frac{k_1[E]_0[S]}{k_{-1} + k_2 + k_1[S]}
+\end{eqnarray*}
+
+The formation of the product $P$ is a first-order reaction. Since we now know an expression for the concentration of the complex, we can write down an expression for the formation of the product \ie
+
+\begin{eqnarray*}
+    \dt{[P]} &=& k_2 [ES] \\
+             &=& k_2 \cdot \frac{k_1[E]_0[S]}{k_{-1}+k_2+k_1[S]}   \\
+             &=& k_1 \cdot \frac{k_2[E]_0[S]}{k_{-1}+k_2+k_1[S]}   \\
+             &=& \frac{\frac{k_2[E]_0[S]}{k_{-1}+k_2+k_1[S]}}{k_1} \\
+             &=& \frac{k_2[E]_0[S]}{\frac{k_{-1}+k2}{k_1}+[S]}      \\
+             &=& \frac{k_2[S]}{K_M + [S]}[E]_0
+\end{eqnarray*}
+
+where $K_M = \frac{k_{-1}+k_2}{k_1}$ is called the \textit{Michaëlis-Menten} constant.
+
+\subsection{The $\species{H_2} + \species{Br_2}$ reaction}
+
+The reaction between hydrogen and bromine is one of the most studied reactions. The overall reaction is
+
+\begin{equation}
+    \species{H_2} + \species{Br_2} \rightarrow 2 \species{HBr}
+\end{equation}
+
+Experimental studies have showed that the velocity of the reaction is given as
+
+\begin{equation}
+    \dt{\conc{HBr}} = \frac{k[\species{H_2}][\species{Br_2}]^\twothird}{[\species{Br_2}] + k^\prime [\species{HBr}]}
+\end{equation}
+
+where $k$ and $k^\prime$ are two constants determined by the experiments. The reaction is believed to consist of five elementary reactions. They are
+
+\begin{subequations}
+  \begin{align}
+    \species{Br_2}                         &\overset{k_1}{\rightarrow}     2\species{Br\cdot} \\
+    \species{Br\cdot} + \species{H_2}      &\overset{k_2}{\rightarrow}     \species{HBr} + \species{H\cdot} \\
+    \species{H\cdot} + \species{Br_2}      &\overset{k_3}{\rightarrow}     \species{HBr} + \species{Br\cdot} \\
+    \species{H\cdot} + \species{HBr}       &\overset{k_4}{\rightarrow}     \species{H_2} + \species{Br\cdot} \\
+    2\species{Br\cdot}                     &\overset{k_5}{\rightarrow}     \species{Br_2}
+  \end{align}
+\end{subequations}
+
+The velocities of these five reactions are
+
+\begin{subequations}
+    \begin{align}
+        v_1   &= k_1[\species{Br_2}]                     \\
+        v_2   &= k_2[\species{Br\cdot}][\species{H_2}]   \\
+        v_3   &= k_3[\species{H\cdot}][\species{Br_2}]   \\
+        v_4   &= k_4[\species{H\cdot}][\species{HBr}]    \\
+        v_5   &= k_5[\species{Br\cdot}]^2
+    \end{align}
+\end{subequations}
+
+The mechanism has two intermediates, namely hydrogen and bromine atoms. We will apply the QSSA to these two species. But first we have to write down the rate laws for them. They are
+
+\begin{subequations}
+    \begin{align}
+        \dt{[\species{H\cdot}]}   &= k_2[\species{H_2}][\species{Br\cdot}] - (k_3[\species{Br_2}] + k_4[\species{HBr}])[\species{H\cdot}] \approx 0 \\
+        \dt{[\species{Br\cdot}]}  &= (k_3[\species{Br_2}] + k_4[\species{HBr}])[\species{H\cdot}] - k_2[\species{H_2}][\species{Br\cdot}] - k_5[\species{Br\cdot}] \approx 0
+    \end{align}
+\end{subequations}
+
+If we add the two equations above, we obtain
+
+\begin{equation}
+    \dt{[\species{H\cdot}]} + \dt{[\species{Br\cdot}]} = k_1[\species{Br_2}] - k_5[\species{Br\cdot}]^2 \approx 0
+\end{equation}
+
+The equation is a quadratic equation in $[\species{Br\cdot}]$ only, and the solution of it is
+
+\begin{equation}
+    [\species{Br\cdot}] = \sqrt{\frac{k_1}{k_5}}\sqrt{[\species{Br_2}]}
+\end{equation}
+
+This expression can be substituted into the rate law for $\dt{[H\cdot]}$, and we solve it for $[\species{H\cdot}]$ and get
+
+\begin{equation}
+    \dt{[\species{HBr}]} = k_2 [\species{H_2}][\species{Br\cdot}] + k_3[\species{Br_2}][\species{H\cdot}] - k_4[\species{HBr}][\species{H\cdot}]
+\end{equation}
+
+and we can insert the expressions obtained by the quasi-steady-state approximation. By doing this, we obtain the experimental rate law if we set the constants $k$ and $k^\prime$ to
+
+\begin{subequations}
+    \begin{align}
+        k        &= 2k_2\sqrt{\frac{k_1}{k_5}}   \\
+        k^\prime &= \frac{k_4}{k_3}
+    \end{align}
+\end{subequations}
+
+\section{Atmospheric chemistry}
+
+In the resent years chemistry of the atmosphere has received more and more interest. The general public has now also become interested, because of the depletion of the ozone layer and smog in our cities.
+
+Opposite of what many believes, atmospheric processes are not only gas phase reaction. Many of the very interesting reaction - like the formation of nitric acid -is thought to occur in droplets, \ie in solution. But in this short introduction, we will only consider gas phase reactions.
+
+Ozone is decomposed in the stratosphere by the reaction $2\species{O_3} \rightarrow 3\species{O_2}$. The first to propose a mechanism was Chapman, and his mechanism consists of three reactions
+
+\begin{subequations}
+    \begin{align}
+        \species{O_3}               &\overset{k_1}{\underset{k_{-1}}{\leftrightharpoons}} \species{O_2} + O \\
+        \species{O} + \species{O_3} &\overset{k_2}{\rightarrow} 2\species{O_2}
+    \end{align}
+\end{subequations}
+
+The rate law for the intermediate, $\species{O}$, is
+
+\begin{equation}
+    \dt{[\species{O}]} = k_1[\species{O_3}] - k_{-1}[\species{O_2}][\species{O}] - k_2[\species{O}][\species{O_3}]
+\end{equation}
+
+We can apply the quasi-steady-state approximation to the concentration of the intermediate. This gives us
+
+\begin{equation}
+    [\species{O}] = \frac{k_1[\species{O_3}]}{k_{-1}[\species{O_2}] - k_2[\species{O_3}]}
+\end{equation}
+
+We are also able to write down the rate law for ozone. This is
+
+\begin{equation}
+    \dt{[\species{O_3}]} = k_1[\species{O_3}] + k_1[\species{O_2}][\species{O}] - k_3[\species{O_3}][\species{O}]
+\end{equation}
+
+and we can insert the expression for $[\species{O}]$ which we obtained just before. This will first expand our expression, but we can reduce it a lot. In the language of mathematics we have
+
+\begin{eqnarray}
+    \dt{[O_3]} &=& -k_1[\species{O_3}] + \frac{k_{-1}[\species{O_2}]k_1[\species{O_3}]}{k_{-1}[\species{O_2}] + k_2[\species{O_3}]} - \frac{k_2[\species{O_3}]k_1[\species{O_3}]}{k_{-1}[\species{O_2}] + k_2[\species{O_3}]} \\ \nonumber
+               &=& \frac{-2\cdot k_1k_2[\species{O_3}]^2}{k_{-1}[\species{O_2}] + k_3[\species{O_3}]}
+\end{eqnarray}
+
+A rate law can also be obtained from the overall reaction, and it is
+
+\begin{equation}
+    \dt{[\species{O_3}]} = -\frac{1}{2}v
+\end{equation}
+
+If we compare the last two equations, we are able to deduce an expression for the velocity of the overall reaction. The velocity, $v$, is
+
+\begin{equation}
+    v = \frac{k_1k_2[\species{O_3}]^2}{k_{-1}[\species{O_2}] + k_3[\species{O_3}]}
+\end{equation}
+
+\section{Temperature as a variable}
+
+In chapter \ref{chap:Temperature} we learned that the rate constant depends on the temperature. The dependence was given by the Arrhenius expression, \ie
+
+\begin{equation}
+    k(T) = Ae^{-\frac{E_a}{RT}}
+\end{equation}
+
+Normally in chemical kinetics, we assume that the system is thermostated, \ie the temperature is constant. But in this section we will let the temperature be a variable.
+
+We will consider a two-reaction system, namely
+
+\begin{align*}
+    P &\overset{k_1}{\rightarrow} A \\
+    A &\overset{k_2}{\rightarrow} B
+\end{align*}
+
+The first reaction is assumed to neither produce nor consume energy, and furthermore we will regard the rate constant independent of the temperature\footnote{In reality, the activation energy is very close to zero implying that the exponential function in the Arrhenius expression for all temperatures is close to 1.}. The second reaction is exothermic, é.e. it produces heat. The experimental  setup is that the reaction vessel is coupled to a heat bath which has the temperature $T_a$.
+
+The rate law for the species $P$ is simple to write down. It is
+
+\[
+    \dt{[P]} = -k_1[P]
+\]
+
+and the solution is
+
+\begin{equation}
+    [P] = [P]_0 e^{-k_1t}
+\end{equation}
+
+The rate law for the other species $A$ is
+
+\begin{equation}
+    \dt{[A]} = k_1[P] -k_2(T)[A]
+\end{equation}
+
+Finally we have to find an differential equation for the temperature. The reaction vessel has the heat capacity $C$, and the walls are not perfect insulators, \ie heat can be transferred though the walls. The heat transferred per unit time is proportional to the area of the walls, and the temperature can be described by
+
+\begin{equation}
+    \dt{T} = \frac{\Delta_r H}{C} k_2(T)[A] - \chi (T-T_a)
+\end{equation}
+
+where $\chi$ is a quantity which describes the heat transferred though the wall, and $\Delta_r H$ is the heat released by the second reaction. The solution of these three differential equations is not possible to do by hand, and figure \ref{fig:temperatureSimul} shows a numerical solution of this scheme.
+
+\begin{figure}
+    \caption{The concentration of $A$ as function of time.\label{fig}}
+\end{figure}
