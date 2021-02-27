@@ -14,8 +14,169 @@ In the theory of differential equations there exists one important
 theorem. It says that the equation
 
 \begin{equation}
-  \diff{x}{t} = f(x, t)
+  \dt{x} = f(x, t)
 \end{equation}
 
 has a unique solution when one specifies the initial conditions \ie
-a value for $x$ at one value of $t$.
+a value for $x$ at one value of $t$. For example, we can write this as $x(t_0) = x_0$. In chemical kinetics we often take $0$ as $t_0$. With the initial values, we have a solution to the equation \ie the function $x(t)$.
+
+\subsection{A quick solution method}
+\label{sect:ode:quick}
+
+The most useful method of solving differential equations (for a chemical kineticist) is by separating the variables. The method is limited to solving equations of the type
+
+\begin{equation}
+  \dt{y} = f(y) \cdot g(t)
+\end{equation}
+
+where $f$ and $g$ are two general functions.
+
+The name "separation of the variables" comes from the fact that we put everything containing $y$ on the left-hand side, and every term containing $t$ on the right-hand side. That is, we divide by $f(y)$ and multiply by $\mathrm{d}t$. These operations give us
+
+\begin{equation}
+  \frac{1}{f(y)} \mathrm{d}y = g(t) \mathrm{d}t
+\end{equation}
+
+As the last step in solving the differential equation is to integrate on both sides. The integration gives us
+
+\begin{eqnarray}
+  \int_{y_0}^{y} \frac{1}{f(y)}\mathrm{d}y &=& \int_{t_0}^t g(t)\mathrm{d}t \Leftrightarrow \\
+  H(y) - H(y_0) &=& G(t) - G(t_0)
+\end{eqnarray}
+
+where $H(y)$ is hen indefinite integral of $\frac{1}{f(y)}$ \ie $\int \frac{1}{f(y)} \mathrm{d}y$ and $G$ is the indefinite integral of $g$. If we want to know the exact expression for $y(t)$ we have to solve the last equation with respect to $y$.
+
+\begin{example}
+  As a short example we will solve the equation
+
+  \begin{equation}
+    \dt{y} = y
+  \end{equation}
+
+  As initial values we will choose $y(0) = 1$. We begin the separation, multiplying with dt and dividing with $y$. We obtain this way
+
+  \begin{equation}
+    \frac{1}{y} \mathrm{d}y = \mathrm{d}t
+  \end{equation}
+
+  We are now ready for the integration, and we get
+
+  \begin{eqnarray}
+    \int_1^y \frac{1}{y} \mathrm{d}y &=& \int_0^t \mathrm{d}t \Leftrightarrow \\ \nonumber
+    \ln y - \ln 1 &=& t - 0 \Leftrightarrow \\ \nonumber
+    y(t) &=& e^t
+  \end{eqnarray}
+\end{example}
+
+\section{General solution}
+\label{sect:ode:general}
+
+The previous section showed us how to solve a special class of differential equations. In this section we will state the general solution.
+
+The general first-order differential equation has the form
+
+\begin{equation}
+  \dt{y} + p(t) \cdot y = q(t)
+\end{equation}
+
+We will not deduce the solution of this equation, but just state that the solution is
+
+\begin{equation}
+  \label{eq:ode:general:solution}
+  y(t) = e^{-h(t)} \left( \int_{t_0}^t e^{h(t)} \cdot q(t) \mathrm{d}t \right) + c
+\end{equation}
+
+where $h(t) = \int p(t) \mathrm{d}t$ and the constant $c$ is a constant which is to be adjusted
+according to the initial values.
+
+\begin{example}
+  To illustrate the method of solving ordinary differential equations, we solve the equation
+
+  \begin{equation}
+    \dt{y} - y = e^{2t}
+  \end{equation}
+
+  with initial values $y(0) = 1$.
+
+  First we identify the different terms in the equation. They are
+
+  \begin{align*}
+    p(t) &= -1 \\
+    q(t) &= e^{2t}
+  \end{align*}
+
+  Next we calculate the function $h(t)$. This is the indefinite integral of $p(t)$. It becomes
+
+  \begin{equation*}
+    h(t) = \int -1 \mathrm{d}t = -t
+  \end{equation*}
+
+  We can now insert all the above into equation \ref{eq:ode:general:solution}. The solution is
+
+  \begin{eqnarray}
+    y(t) &=& e^t \left( \int e^{-t}e^{2t}\mathrm{d}t + c \right) \\ \nonumber
+         &=& e^t \cdot \left( e^t + c \right) \\ \nonumber
+         &=& ce^t + e^{2t}
+  \end{eqnarray}
+
+  The final step is to insert the initial values in order to find the constant $c$. Inserting $y(0) = 1$, we have the algebraic equation
+
+  \begin{equation}
+    y(0) = ce^0 + e^{2\cdot0} = c = 1
+  \end{equation}
+
+  which directly gives us $c$.
+\end{example}
+
+\subsection{The operator method}
+\label{sect:ode:operator}
+
+There exists one very smart method in solving differential equations coming from chemical kinetics, and it is the \textit{operator method}. We will in this section briefly describe it, otherwise we can only recommend the reader to consult the book by Capellos and Bielski called "Kinetics Systems" (published by Wiley and Sons in 1972).
+
+The operator method can only be used for linear differential equations. The basic idea is to transform the differential equation into an algebraic equation. The way of doing this is to substitute every $\dt{}$ with $S$ - and regard $S$ as an unknown ($S$ is called a linear operator, and this is the reason for the name of the method).
+
+\begin{example}
+  The operator method is simpler to explain by showing an example. We want to solve the equation
+
+  \begin{equation}
+    \dt{y} + ay = 1
+  \end{equation}
+
+  where $a$ is a number. If we perform the substitution mentioned above, we arrive at
+
+  \begin{equation}
+    Sy + ay = 1
+  \end{equation}
+
+  This equation is solved with respect of $y$ - it is a fairly simple equation. This is called the transformed equation, and it is
+
+  \begin{equation}
+    y = \frac{1}{S + y}
+  \end{equation}
+
+  From this, we are able to find the solution of the differential equation (see the table below). The function $y(t)$ is therefore
+
+  \begin{equation}
+    y(t) = \frac{1}{a} - \frac{1}{a}e^{-at}
+  \end{equation}
+\end{example}
+
+Table \ref{table:operator} lists transformed equations and their solutions.
+
+\begin{table}
+  \centering
+  \begin{tabular}{|l|l|}
+    \hline
+    Transformed equation     & Solution \\ \hline\hline
+    $\frac{1}{S}$            & $t$ \\
+    $\frac{1}{S^n}$          & $\frac{t^n}{n!}$ \\
+    $\frac{1}{S\pm a}$       & $\pm \frac{1}{a} - \frac{1}{\pm a}e^{\mp at}$ \\
+    $\frac{S}{S\pm a}$       & $e^{\mp at}$ \\
+    $\frac{S+b}{S+a}$        & $\frac{b}{a} - \frac{b-a}{a}e^{-at}$ \\
+    $\frac{1}{(S+a)(S+b)}$   & $\frac{1}{ab} - \frac{1}{a(b-a)}e^{-at} - \frac{1}{b(a-b)}e^{-bt}$ \\
+    $\frac{S}{(S+a)(S+b)}$   & $\frac{1}{b-a}e^{-at} + \frac{1}{a-b}e^{-bt}$ \\
+    $\frac{S+a}{(S+b)(S+c)}$ & $\frac{a}{bc} - \frac{a-b}{b(c-b)}e^{-bt} - \frac{a-c}{c(b-c)}e^{-ct}$ \\ \hline
+  \end{tabular}
+  \caption{Operator method: transformed equation and its solution.}
+  \label{table:operator}
+\end{table}
